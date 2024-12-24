@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static\css\freebooks.css">
+    <title>Free Books</title>
+ 
+</head>
+<body>
+    <nav>
+        <div>Online Library</div>
+        <div>
+            <a href="home">Home</a>
+            <a href="books">Books</a>
+            <a href="buybooks">Buy Books</a>
+            <a href="contactus">Contact Us</a>
+          
+        </div>
+    </nav>
+
+
+    <header>
+        <h1>Free Books</h1>
+        <p>Enjoy a collection of free books, ready for download!</p>
+    </header>
+
+    <main>
+        <section class="search-filter">
+            <input type="text" placeholder="Search for a book..." id="search-bar">
+            <select id="category-filter">
+                <option value="all">All Categories</option>
+                <option value="fiction">Fiction</option>
+                <option value="non-fiction">Non-Fiction</option>
+                <option value="science">Science</option>
+                <option value="history">History</option>
+            </select>
+        </section>
+
+        <section class="books-grid">
+            <div class="book-card">
+                <img src="https://via.placeholder.com/150" alt="Book 1">
+                <h3>Book Title 1</h3>
+                <button class="download-btn">Download</button>
+            </div>
+            <div class="book-card">
+                <img src="https://via.placeholder.com/150" alt="Book 2">
+                <h3>Book Title 2</h3>
+                <button class="download-btn">Download</button>
+            </div>
+            <div class="book-card">
+                <img src="https://via.placeholder.com/150" alt="Book 3">
+                <h3>Book Title 3</h3>
+                <button class="download-btn">Download</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Online Library. All rights reserved.</p>
+    </footer>
+
+    <script>
+     
+        document.getElementById("search-bar").addEventListener("input", function(event) {
+            let filter = event.target.value.toLowerCase();
+            let cards = document.querySelectorAll(".book-card");
+
+            cards.forEach(function(card) {
+                let title = card.querySelector("h3").textContent.toLowerCase();
+                if (title.includes(filter)) {
+                    card.style.display = "block";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, #f5f7fa, #c3cfe2);
+    color: #333;
+}
+
+.container {
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2.5em;
+    color: #4a4e69;
+}
+
+.search-bar {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.search-bar input {
+    padding: 10px;
+    width: 60%;
+    max-width: 500px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.search-bar button {
+    padding: 10px 20px;
+    margin-left: 10px;
+    background-color: #6c63ff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search-bar button:hover {
+    background-color: #4a47a3;
+}
+
+.books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 0 20px;
+}
+
+.book-item {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.book-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.book-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.book-item h3 {
+    padding: 10px;
+    font-size: 1.2em;
+    color: #222;
+}
+
+.book-item p {
+    padding: 0 10px 10px;
+    font-size: 0.9em;
+    color: #555;
+}
+
+.book-item .author {
+    font-style: italic;
+    color: #888;
+    padding: 0 10px;
+}
+
+.book-item .price {
+    font-weight: bold;
+    color: #6c63ff;
+    padding: 0 10px 10px;
+}
+
+.no-results {
+    text-align: center;
+    color: #ff0000;
+    font-size: 1.2em;
+    display: none; 
+}

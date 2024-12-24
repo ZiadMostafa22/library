@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books</title>
+    <link rel="stylesheet" href="static\css\bookscss.css">
+   
+      
+</head>
+<body>
+
+
+    <nav>
+        <div>Online Library</div>
+        <div>
+            <a href="home">Home</a>
+            <a href="books">Books</a>
+            <a href="buybooks">Buy Books</a>
+            <a href="contactus">Contact Us</a>
+          
+        </div>
+    </nav>
+
+
+
+<div class="container">
+    <h1>Explore Our Books</h1>
+
+    <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search for a book...">
+        <button onclick="searchBook()">Search</button>
+    </div>
+
+    <div class="no-results" id="noResultsMessage">No books found matching your search.</div>
+
+    <div class="books-grid" id="booksGrid">
+        
+    </div>
+</div>
+
+<script>
+   
+    const books = [
+        {title: 'Book Title 1', author: 'Author 1', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', price: '$10.99', imgSrc: 'book1.jpg'},
+        {title: 'Book Title 2', author: 'Author 2', description: 'Quisque vel lacus a eros fermentum aliquam.', price: '$12.99', imgSrc: 'book2.jpg'},
+        {title: 'Book Title 3', author: 'Author 3', description: 'Sed euismod urna in nisi tristique, non blandit ligula scelerisque.', price: '$15.49', imgSrc: 'book3.jpg'},
+        
+    ];
+
+   
+    localStorage.setItem('books', JSON.stringify(books));
+
+  
+    function renderBooks(filteredBooks) {
+        const booksGrid = document.getElementById('booksGrid');
+        booksGrid.innerHTML = ''; 
+        if (filteredBooks.length === 0) {
+          
+            document.getElementById('noResultsMessage').style.display = 'block';
+        } else {
+          
+            document.getElementById('noResultsMessage').style.display = 'none';
+            filteredBooks.forEach(book => {
+                const bookItem = document.createElement('div');
+                bookItem.classList.add('book-item');
+                
+                bookItem.innerHTML = `
+                    <img src="${book.imgSrc}" alt="${book.title}">
+                    <h3>${book.title}</h3>
+                    <p>${book.description}</p>
+                    <p class="author">by ${book.author}</p>
+                    <p class="price">${book.price}</p>
+                `;
+                booksGrid.appendChild(bookItem);
+            });
+        }
+    }
+
+   
+    function searchBook() {
+        const searchInput = document.getElementById('searchInput').value.toLowerCase();
+        const storedBooks = JSON.parse(localStorage.getItem('books'));
+
+       
+        const filteredBooks = storedBooks.filter(book => book.title.toLowerCase().includes(searchInput));
+
+       
+        renderBooks(filteredBooks);
+    }
+
+   
+    renderBooks(books);
+</script>
+
+</body>
+</html>
